@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Smart Study Planner — Interactive</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>📚 Smart Study Planner</h1>
+    <div class="top-controls">
+      <div class="toggle-group">
+        <button id="darkToggle" class="icon-btn" aria-label="Toggle dark mode">🌙</button>
+        <button id="notifyToggle" class="icon-btn" aria-label="Enable reminders">🔔 Enable Reminders</button>
+      </div>
+      <div class="streak" id="streakDisplay">🔥 Streak: 0 days</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Task Input -->
+    <section class="task-input">
+      <input type="text" id="taskName" placeholder="Enter study task..." aria-label="Task name" />
+      <input type="date" id="taskDate" aria-label="Task date" />
+      <select id="taskPriority" aria-label="Task priority">
+        <option value="Low">Low</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="High">High</option>
+      </select>
+      <button id="addTaskBtn" class="primary">➕ Add Task</button>
+    </section>
+
+    <!-- Search & Filters -->
+    <section class="task-controls">
+      <input type="search" id="searchInput" placeholder="Search tasks..." aria-label="Search tasks" />
+      <select id="filterStatus" aria-label="Filter status">
+        <option value="all">All</option>
+        <option value="pending">Pending</option>
+        <option value="completed">Completed</option>
+      </select>
+      <select id="filterPriority" aria-label="Filter priority">
+        <option value="all">All priorities</option>
+        <option value="High">High</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+      </select>
+      <button id="clearCompleted" class="muted">Clear Completed</button>
+    </section>
+
+    <!-- Task List -->
+    <section class="task-list">
+      <h2>Your Tasks</h2>
+      <ul id="taskContainer" aria-live="polite"></ul>
+      <p id="noTasks" class="muted">No tasks yet — add your first study task!</p>
+    </section>
+
+    <!-- Progress -->
+    <section class="progress">
+      <h2>Progress Tracker</h2>
+      <div class="progress-bar" aria-hidden="true">
+        <div id="progressFill"></div>
+      </div>
+      <p id="progressText">0% Completed</p>
+    </section>
+  </main>
+
+  <!-- Edit Modal -->
+  <div id="editModal" class="modal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-label="Edit task">
+      <h3>Edit Task</h3>
+      <input type="text" id="editName" placeholder="Task name" />
+      <input type="date" id="editDate" />
+      <select id="editPriority">
+        <option value="Low">Low</option>
+        <option value="Medium">Medium</option>
+        <option value="High">High</option>
+      </select>
+      <div class="modal-actions">
+        <button id="saveEdit" class="primary">Save</button>
+        <button id="cancelEdit" class="muted">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
